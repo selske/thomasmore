@@ -1,4 +1,4 @@
-package com.axxes.traineeship.testing.mocking;
+package com.axxes.traineeship.testing.integration;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 

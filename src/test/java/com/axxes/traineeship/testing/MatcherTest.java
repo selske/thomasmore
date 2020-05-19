@@ -1,7 +1,7 @@
 package com.axxes.traineeship.testing;
 
 import org.assertj.core.api.Assertions;
-import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.groups.Tuple;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,9 @@ import static java.util.Arrays.asList;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 import static org.assertj.core.groups.Tuple.tuple;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MatcherTest {
 
@@ -31,15 +33,24 @@ class MatcherTest {
                 new Trainee("Yassine", "Bouzeya")
         );
 
-//        assertEquals(9, trainees.size());
+//        assertEquals(8, trainees.size());
+        // hamcrest
         assertThat(trainees, hasSize(9));
+
         assertThat(trainees, hasItem(traineeWithFirstName("Bart").andLastName("Wezenbeek")));
 
+
         Assertions.assertThat(trainees)
-                .                        anySatisfy(t -> assertSoftly(softly -> {
+                .anySatisfy(t -> assertSoftly(softly -> {
                     softly.assertThat(t.getFirstName()).isEqualTo("Tommy");
                     softly.assertThat(t.getLastName()).isEqualTo("Zhou");
                 }));
+
+        Assertions.assertThat(trainees)
+                .extracting(Trainee::getFirstName, Trainee::getLastName)
+                .contains(
+                        tuple("Tommy", "Zhou")
+                );
     }
 
     private static final class Trainee {

@@ -1,7 +1,5 @@
 package com.axxes.traineeship.testing.integration;
 
-import com.axxes.traineeship.testing.mocking.Person;
-import com.axxes.traineeship.testing.mocking.PersonDaoImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;

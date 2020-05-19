@@ -1,8 +1,7 @@
 package com.axxes.traineeship.testing.mocking;
 
-import com.axxes.traineeship.testing.mocking.Person;
-import com.axxes.traineeship.testing.mocking.PersonDao;
-import com.axxes.traineeship.testing.mocking.RegisterPersonException;
+import com.axxes.traineeship.testing.integration.Person;
+import com.axxes.traineeship.testing.integration.PersonDao;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

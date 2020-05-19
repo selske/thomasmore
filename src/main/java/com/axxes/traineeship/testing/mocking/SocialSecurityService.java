@@ -1,5 +1,7 @@
 package com.axxes.traineeship.testing.mocking;
 
+import com.axxes.traineeship.testing.integration.Person;
+import com.axxes.traineeship.testing.integration.PersonDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.UUID;

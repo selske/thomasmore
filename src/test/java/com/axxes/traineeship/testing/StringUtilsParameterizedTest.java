@@ -1,5 +1,6 @@
 package com.axxes.traineeship.testing;
 
+import com.axxes.traineeship.testing.unit.StringUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
