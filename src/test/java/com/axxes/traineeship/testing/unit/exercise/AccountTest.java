@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.data.Offset.offset;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class AccountTest {
 
@@ -48,6 +50,9 @@ class AccountTest {
         assertThatThrownBy(() -> account.withdraw(1700.3f, 0.5f))
                 .isOfAnyClassIn(InvalidOperationException.class)
                 .hasMessage("Unable to withdraw 1700.8");
+
+        InvalidOperationException invalidOperationException = assertThrows(InvalidOperationException.class, () -> account.withdraw(1700.3f, 0.5f));
+        assertEquals(invalidOperationException.getMessage(), "Unable to withdraw 1700.8");
 
         assertThat(account.getBalance()).isEqualTo(1300.1f);
     }

@@ -4,19 +4,19 @@ import com.axxes.traineeship.testing.integration.Person;
 import com.axxes.traineeship.testing.integration.PersonDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.UUID;
-
 public class SocialSecurityService {
 
     private final PersonDao personDao;
+    private SocialSecurityGenerator socialSecurityNumberGenerator;
 
     @Autowired
-    public SocialSecurityService(final PersonDao personDao) {
+    public SocialSecurityService(final PersonDao personDao, SocialSecurityGenerator socialSecurityNumberGenerator) {
         this.personDao = personDao;
+        this.socialSecurityNumberGenerator = socialSecurityNumberGenerator;
     }
 
     public Person registerPerson(final String firstName, final String lastName) throws RegisterPersonException {
-        String socialSecurityNumber = UUID.randomUUID().toString();
+        String socialSecurityNumber = socialSecurityNumberGenerator.generate();
 
         Person person = new Person(socialSecurityNumber, firstName, lastName);
 

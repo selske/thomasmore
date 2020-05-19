@@ -51,7 +51,8 @@ class PersonDaoImplTest {
 
         assertThat(output.getFirstName(), is("Kevin"));
 
-        List<Map<String, Object>> result = new JdbcTemplate(dataSource).queryForList("select * from PERSONS where SOCIAL_SECURITY_NUMBER = ?", "s1");
+        List<Map<String, Object>> result = new JdbcTemplate(dataSource)
+                .queryForList("select * from PERSONS where SOCIAL_SECURITY_NUMBER = ?", "s1");
         assertThat(result, hasSize(1));
         assertThat(result.get(0).get("FIRST_NAME"), is("Kevin"));
         assertThat(result.get(0).get("LAST_NAME"), is("Sels"));

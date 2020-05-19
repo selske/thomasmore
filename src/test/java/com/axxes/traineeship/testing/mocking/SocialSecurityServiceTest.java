@@ -16,7 +16,8 @@ import static org.mockito.Mockito.*;
 class SocialSecurityServiceTest {
 
     PersonDao personDaoMock = mock(PersonDao.class);
-    SocialSecurityService socialSecurityService = new SocialSecurityService(personDaoMock);
+    private SocialSecurityGenerator socialSecurityNumberGenerator = mock(SocialSecurityGenerator.class);
+    SocialSecurityService socialSecurityService = new SocialSecurityService(personDaoMock, socialSecurityNumberGenerator);
 
     @BeforeEach
     void setPersonDaoMock() {
