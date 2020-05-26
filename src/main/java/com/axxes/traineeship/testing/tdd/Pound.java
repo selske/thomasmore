@@ -2,12 +2,12 @@ package com.axxes.traineeship.testing.tdd;
 
 import java.util.Objects;
 
-public class Dollar extends Money {
+public class Pound extends Money {
 
     private final int value;
 
-    public Dollar(int value) {
-        super(value, "USD");
+    public Pound(int value) {
+        super(value, "GBP");
         this.value = value;
     }
 
@@ -15,7 +15,7 @@ public class Dollar extends Money {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Dollar dollar = (Dollar) o;
+        Pound dollar = (Pound) o;
         return value == dollar.value;
     }
 

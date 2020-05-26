@@ -24,6 +24,7 @@ class SocialSecurityServiceTest {
         when(personDaoMock.create(Mockito.any(Person.class)))
                 .thenAnswer((Answer<Person>) invocation -> (Person) invocation.getArguments()[0]);
 
+        when(socialSecurityNumberGenerator.generate()).thenReturn("SSN");
     }
 
     @Test
@@ -37,10 +38,9 @@ class SocialSecurityServiceTest {
 
 
 
-        Person value = person;
-//        Person value = personCaptor.getValue();
+        Person value = personCaptor.getValue();
         System.out.println("value = " + value);
-        assertThat(value.getSocialSecurityNumber(), is(Matchers.any(String.class)));
+        assertThat(value.getSocialSecurityNumber(), is(equalTo("SSN")));
         assertThat(value.getFirstName(), equalTo("Kevin"));
 
         verifyNoMoreInteractions(personDaoMock);
